@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<h1>Hello
+    <span id="clientName"></span><br>
+    <img id="clientPhoto" src="">
+</h1>
+<button>Sign in</button>
+</body>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyANqR8zvn2-kT_OGuEpwaFbe2z5qJ57gUk",
+        authDomain: "thenotesrefinery-2018.firebaseapp.com",
+        databaseURL: "https://thenotesrefinery-2018.firebaseio.com",
+        projectId: "thenotesrefinery-2018",
+        storageBucket: "thenotesrefinery-2018.appspot.com",
+        messagingSenderId: "565239241709"
+    };
+    firebase.initializeApp(config);
+
+    function login() {
+        firebase.auth().onAuthStateChanged(newLoginHappened);
+    }
+
+    function newLoginHappened(user) {
+        if (user) {
+            // User is signed in
+            app(user);
+            console.log("done");
+        } else {
+            console.log("login");
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider);
+
+        }
+    }
+
+    function app(user) {
+        // user.displayName
+        // user.email
+        // user.photoURL
+        // user.uid
+
+        document.getElementById('clientName').innerHTML = user.displayName;
+        document.getElementById('clientPhoto').setAttribute("src", user.photoURL);
+    }
+
+    window.onload = login;
+
+</script>
+</html>

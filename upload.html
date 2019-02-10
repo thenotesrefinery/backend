@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Upload</title>
+
+    <link href="css/upload.css" rel="stylesheet">
+    <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!--Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="home.html">
+            <img src="img/logo.png" width="200" height="30" class="d-inline-block">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="all-notes.html">All Notes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="upload.html">Upload
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="verify.html">Verify</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="terms-cond.html">Terms & Conditions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-outline-primary btn-sm">Sign In</button>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading -->
+    <div class="my-4">
+        <h2 class="text-center page-header">Upload Notes</h2>
+    </div>
+    <div class="custom-file">
+        <input type="file" class="form-control-file" id="file">
+    </div>
+    <form class="my-4">
+        <!--Subject (checkbox)-->
+        <div class="form-group row">
+            <div class="col-sm-2 advanced-label">Subject</div>
+            <div class="col-sm-10 advanced-label">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck2">
+                    <label class="form-check-label" for="gridCheck2">Physics</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck3">
+                    <label class="form-check-label" for="gridCheck3">Biology</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck4">
+                    <label class="form-check-label" for="gridCheck4">Chemistry</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck5">
+                    <label class="form-check-label" for="gridCheck5">Computing</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck6">
+                    <label class="form-check-label" for="gridCheck6">Mathematics</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck7">
+                    <label class="form-check-label" for="gridCheck7">Economics</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck8">
+                    <label class="form-check-label" for="gridCheck8">General Paper</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck9">
+                    <label class="form-check-label" for="gridCheck9">English Literature</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck10">
+                    <label class="form-check-label" for="gridCheck10">Geography</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck11">
+                    <label class="form-check-label" for="gridCheck11">History</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="gridCheck12">
+                    <label class="form-check-label" for="gridCheck12">Social Studies</label>
+                </div>
+            </div>
+        </div>
+        <!--Level (radio)-->
+        <div class="form-group row">
+            <legend class="col-form-label col-sm-2 advanced-label">Level</legend>
+            <div class="pl-3 pt-2">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                        O Level
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                    <label class="form-check-label" for="gridRadios3">
+                        A Level
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+    </form>
+
+    <button class="btn btn-outline-primary btn-block mb-5" type="button" id="button-search">Upload
+        <i class="fa fa-cloud-upload" style="font-size:20px;"></i>
+    </button>
+
+</div>
+
+<!-- FOOTER -->
+<footer>&copy; thenotesrefinery 2018</footer>
+
+<script src="library/jquery/jquery.min.js"></script>
+<script src="library/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

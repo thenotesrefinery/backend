@@ -1,0 +1,122 @@
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+    overflow-y: scroll;;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /*background-color: #111;*/
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #6c757d;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #6c757d;
+    background-color: #b3d7ff;
+}
+
+/*.sidenav .closebtn {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 25px;*/
+    /*font-size: 36px;*/
+    /*margin-left: 50px;*/
+/*}*/
+
+/*.main {*/
+    /*transition: margin-left .5s;*/
+    /*padding: 16px;*/
+/*}*/
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.basic-input {
+    width: 70%;
+}
+
+.search-heading {
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('../fonts/Muli.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+.search-heading {
+    /*font-family: Quicksand;*/
+    font-family: 'Muli', sans-serif; /* fallback in case computer doesn't have the font */
+    font-weight: bold;
+    margin: 20px;
+    /*font-style: italic;*/
+    /*font-weight: 100;*/
+    /*font-size: 50pt;*/
+    /*text-shadow: 4px 4px 4px #aaa;*/
+    /*color: #05a;*/
+}
+
+#search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 90vh;
+}
+
+.steps {
+    display: table-cell;
+}
+
+.steps-logo {
+    padding-right: 15px;
+    vertical-align: top;
+    color: #0C71C3;
+}
+
+.steps-heading {
+    font-family: 'Muli', sans-serif; /* fallback in case computer doesn't have the font */
+    color: black;
+}
+
+.steps-subheading {
+    font-family: 'Muli', sans-serif; /* fallback in case computer doesn't have the font */
+}
+
+.navigation-bar {
+    /*position: absolute;*/
+}
+
+h2.steps-heading {
+    font-family: 'Muli', sans-serif; /* fallback in case computer doesn't have the font */
+    color: #0C71C3;
+    font-weight: bold;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+footer {
+    background-color: #64b5f6;
+    margin: 20px;
+    width: 100%;
+}

@@ -1,0 +1,45 @@
+/*!
+ * Start Bootstrap - 1 Col Portfolio (https://startbootstrap.com/template-overviews/1-col-portfolio)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-1-col-portfolio/blob/master/LICENSE)
+ */
+
+@font-face {
+  font-family: 'Muli';
+  src: url('../fonts/Muli.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+body {
+  padding-top: 54px;
+  font-family: 'Muli', sans-serif;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.pagination {
+  margin-bottom: 15px;
+}
+
+.page-header {
+  color: #0C71C3;
+}
+
+nav {
+  background-color: ghostwhite;
+  opacity: 0.9;
+}
+
+footer {
+  background-color: ghostwhite;
+  width: 100%;
+  position: absolute;
+  padding-bottom: 5px;
+  color: grey;
+  text-align: center;
+  padding-top: 10px;
+}
