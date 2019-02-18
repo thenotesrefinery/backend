@@ -32,6 +32,22 @@ def allnotes():
 def note(id):
     return render_template('note.html', id=id)
 
+@app.route('/upload')
+def upload():
+    return render_template('upload.html')
+
+@app.route('/verify')
+def verify():
+    return render_template('verify.html')
+
+@app.route('/terms-cond')
+def termsCond():
+    return render_template('terms-cond.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
