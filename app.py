@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
 from data import notesData
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators 
@@ -7,11 +7,11 @@ from passlib.hash import sha256_crypt
 app = Flask(__name__)
 
 # config mysql
-app.config('MYSQL_HOST') = 'localhost'
-app.config('MYSQL_USER') = 'root'
-app.config('MYSQL_PASSWORD') = '12345678'
-app.config('MYSQL_DB') = 'tnrapp'
-app.config('MYSQL_CURSORCLASS') = 'DictCursor'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '12345678'
+app.config['MYSQL_DB'] = 'tnrapp'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 # init mysql
 mysql = MySQL(app)
@@ -32,7 +32,6 @@ def allnotes():
 def note(id):
     return render_template('note.html', id=id)
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
@@ -50,11 +49,20 @@ def register():
         # close connection 
         cur.close()
 
-        flash("You have successfully registered and can can login.", 'success')
+        flash("You have successfully registered and can login.", 'success')
         redirect(url_for('home'))
 
     return render_template('register.html', form=form)
 
+class RegisterForm(Form):
+    name = StringField('Name', [validators.Length(min=1, max=50)])
+    username = StringField('Username', [validators.Length(min=4, max=25)])
+    email = StringField('Email', [validators.Length(min=1, max=50)])
+    password = PasswordField('Password', [
+        validators.DataRequired(),
+        validators.EqualTo('confirm', message='Passwords do not match')
+    ])
+    confirm = PasswordField('Confirm Password')
 
 if __name__ == '__main__':
     app.run(debug = True)
