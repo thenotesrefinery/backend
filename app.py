@@ -36,9 +36,22 @@ def note(id):
 def upload():
     return render_template('upload.html')
 
+@app.route('/view-notes')
+def viewNotes():
+    return render_template('view-notes.html')
+
+# linked by all-notes
+@app.route('/user')
+def user():
+    return render_template('user.html')
+
 @app.route('/verify')
 def verify():
     return render_template('verify.html')
+
+@app.route('/validate-notes')
+def validateNotes():
+    return render_template('validate-notes.html')
 
 @app.route('/terms-cond')
 def termsCond():

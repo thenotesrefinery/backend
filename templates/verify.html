@@ -1,60 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout.html' %}
 
-  <head>
+{% block title %}Verify{% endblock %}
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% block customCSS %}
+<link href="{{ url_for('static', filename='css/verify.css') }}" rel="stylesheet">
+{% endblock %}
 
-    <title>Verify</title>
+{% set active_page = 'verify' %}
 
-    <link href="css/verify.css" rel="stylesheet">
-    <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-  <!--Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
-              data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="home.html">
-        <img src="img/logo.png" width="200" height="30" class="d-inline-block">
-      </a>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="all-notes.html">All Notes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="upload.html">Upload</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="verify.html">Verify
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="terms-cond.html">Terms & Conditions</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-      <button type="button" class="btn btn-outline-primary btn-sm">Sign In</button>
-    </div>
-  </nav>
-
-    <!-- Page Content -->
+{% block content %}
+  <!-- Page Content -->
     <div class="container">
       <!-- Page Heading -->
       <div class="my-4">
@@ -199,20 +154,20 @@
       <!-- Notes One -->
       <div class="row">
         <div class="col-md-5 notes-container">
-            <img class="notes-img" src="img/respiration-watermark1.PNG" alt="">
+          <img class="notes-img" src="{{ url_for('static', filename='img/respiration-watermark1.PNG') }}" alt="">
         </div>
         <div class="col-md-7">
           <div class="ml-3">
             <h3>Respiration</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-            <a class="btn btn-primary" href="validate-notes.html">View More...</a>
+            <a class="btn btn-primary" href="{{ url_for('validateNotes') }}">View More...</a>
           </div>
         </div>
         <div class="row mt-3 ml-5">
             <span>
-              <i class="fa fa-user"></i> by <a href="user.html">Johnathan</a>
+              <i class="fa fa-user"></i> by <a href="{{ url_for('user') }}">Johnathan</a>
               | <i class="fa fa-calendar"></i> 27 Sep 2018
-              | <i class="fa fa-comment"></i><a href="validate-notes.html#discussion"> 4 Comments</a>
+              | <i class="fa fa-comment"></i><a href="{{ url_for('validateNotes') }}#discussion"> 4 Comments</a>
               | <i class="fa fa-eye"></i> 39 Views
               | <i class="fa fa-check"></i> 3 Verifiers
               |
@@ -229,7 +184,7 @@
       <!-- Notes Two -->
       <div class="row">
         <div class="col-md-5">
-          <img class="notes-img" src="img/Singapore-characteristics-Jiaxin.jpg" alt="">
+          <img class="notes-img" src="{{ url_for('static', filename='img/Singapore-characteristics-Jiaxin.jpg') }}" alt="">
         </div>
         <div class="col-md-7">
           <div class="ml-3">
@@ -240,7 +195,7 @@
         </div>
         <div class="row mt-3 ml-5">
           <span>
-            <i class="fa fa-user"></i> by <a href="user.html">Johnathan</a>
+            <i class="fa fa-user"></i> by <a href="{{ url_for('user') }}">Johnathan</a>
             | <i class="fa fa-calendar"></i> 27 Sep 2018
             | <i class="fa fa-comment"></i><a href="#"> 4 Comments</a>
             | <i class="fa fa-eye"></i> 39 Views
@@ -259,7 +214,7 @@
       <!-- Notes Three -->
       <div class="row">
         <div class="col-md-5">
-          <img class="notes-img" src="img/Econs2.jpg" alt="">
+          <img class="notes-img" src="{{ url_for('static', filename='img/Econs2.jpg') }}" alt="">
         </div>
         <div class="col-md-7">
           <div class="ml-3">
@@ -270,7 +225,7 @@
         </div>
         <div class="row mt-3 ml-5">
           <span>
-            <i class="fa fa-user"></i> by <a href="user.html">Johnathan</a>
+            <i class="fa fa-user"></i> by <a href="{{ url_for('user') }}">Johnathan</a>
             | <i class="fa fa-calendar"></i> 27 Sep 2018
             | <i class="fa fa-comment"></i><a href="#"> 4 Comments</a>
             | <i class="fa fa-eye"></i> 39 Views
@@ -312,14 +267,8 @@
       </ul>
 
     </div>
+{% endblock %}
 
-  <!-- FOOTER -->
-  <footer>&copy; thenotesrefinery 2018</footer>
-
-    <script src="library/jquery/jquery.min.js"></script>
-    <script src="library/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/verify.js"></script>
-
-  </body>
-
-</html>
+{% block customJS %}
+<script src="{{ url_for('static', filename='js/verify.js') }}"></script>
+{% endblock %}
