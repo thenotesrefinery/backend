@@ -1,34 +1,32 @@
 {% set navbar = [
-  ('allnotes', 'all', 'All Notes'),
-  ('upload', 'upload', 'Upload'),
-  ('verify', 'verify', 'Verify'),
-  ('termsCond', 'terms', 'Terms & Conditions'),
-  ('contact', 'contact', 'Contact Us')
-] -%}]
+('allnotes', 'all', 'All Notes'),
+('upload', 'upload', 'Upload'),
+('verify', 'verify', 'Verify'),
+('termsCond', 'terms', 'Terms & Conditions'),
+('contact', 'contact', 'Contact Us')
+] -%}
 
 {% set active_page = active_page -%}
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container">
-        <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{{ url_for('home') }}">
-          <img src="{{ url_for('static', filename='img/logo.png') }}" width="200" height="30" class="d-inline-block">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">
-                {% for href, id, text in navbar %}
-                <li class="nav-item {% if id == active_page %}active{% endif %}">
-                  <a class="nav-link" href="{{ url_for(href) }}">{{ text }}</a>
-                  </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <button type="button" class="btn btn-outline-primary btn-sm">Sign In</button>
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+                                                                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                                                                                                                                      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" width="200" height="30" class="d-inline-block">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        {% for href, id, text in navbar %}
+        <li class="nav-item {% if id == active_page %}active{% endif %}">
+          <a class="nav-link" href="{{ url_for(href) }}">{{ text }}</a>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
+    <button type="button" class="btn btn-outline-primary btn-sm">Sign In</button>
+  </div>
 </nav>
-
-
