@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    PDFObject.embed("sampleNotes/respiration.pdf", "#pdf-notes");
+    PDFObject.embed("static/sampleNotes/respiration.pdf", "#pdf-notes");
 });
 
 function toggleGood() {
