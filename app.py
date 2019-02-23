@@ -61,6 +61,10 @@ def termsCond():
 def contact():
     return render_template('contact.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
