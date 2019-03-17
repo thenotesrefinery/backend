@@ -3,6 +3,7 @@ from data import notesData
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators 
 from passlib.hash import sha256_crypt
+from functools import wraps
 
 app = Flask(__name__)
 
@@ -61,10 +62,6 @@ def termsCond():
 def contact():
     return render_template('contact.html')
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
@@ -83,7 +80,7 @@ def register():
         cur.close()
 
         flash("You have successfully registered and can login.", 'success')
-        redirect(url_for('home'))
+        return redirect(url_for('login'))
 
     return render_template('register.html', form=form)
 
@@ -97,6 +94,58 @@ class RegisterForm(Form):
     ])
     confirm = PasswordField('Confirm Password')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Get form fields
+        username = request.form['username']
+        password_candidate = request.form['password']
+        
+        # Create cursor
+        cur = mysql.connection.cursor()
+
+        # Get user by username
+        result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
+
+        if result > 0:
+            # Get stored hash
+            data = cur.fetchone()
+            password = data['password']
+
+            # Compare passwords
+            if sha256_crypt.verify(password_candidate, password):
+                # Passed
+                session['logged_in'] = True
+                session['username'] = username
+
+                return redirect(url_for('home'))
+            else:
+                error = 'Wrong password'
+                return render_template('login.html', error=error)
+            cur.close()
+
+        else:
+            error = 'Username not found'
+            return render_template('login.html', error=error)
+    return render_template('login.html')
+
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('You need to be logged in to access this page.', 'danger')
+            return redirect(url_for('login'))
+    return wrap
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('You are now logged out', 'success')
+    return redirect(url_for('login'))
+
 if __name__ == '__main__':
+    app.secret_key='secret123'
     app.run(debug = True)
 

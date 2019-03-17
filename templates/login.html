@@ -1,60 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends 'layout.html' %}
 
-<body>
-<h1>Hello
-    <span id="clientName"></span><br>
-    <img id="clientPhoto" src="">
-</h1>
-<button>Sign in</button>
-</body>
+{% block title %}Log In{% endblock %}
+
+{% block customCSS %}
+<link href="{{ url_for('static', filename='css/layout.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% set active_page = 'login' %}
+
+{% block content %}
+<div class="container">
+  <div class="my-4">
+    <h2 class="text-center page-header">Log In</h2>
+  </div>
+  <form action="" method="POST">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="username" class="form-control" value={{request.form.username}}>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password" class="form-control" value={{request.form.password}}>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}
 
 
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyANqR8zvn2-kT_OGuEpwaFbe2z5qJ57gUk",
-        authDomain: "thenotesrefinery-2018.firebaseapp.com",
-        databaseURL: "https://thenotesrefinery-2018.firebaseio.com",
-        projectId: "thenotesrefinery-2018",
-        storageBucket: "thenotesrefinery-2018.appspot.com",
-        messagingSenderId: "565239241709"
-    };
-    firebase.initializeApp(config);
-
-    function login() {
-        firebase.auth().onAuthStateChanged(newLoginHappened);
-    }
-
-    function newLoginHappened(user) {
-        if (user) {
-            // User is signed in
-            app(user);
-            console.log("done");
-        } else {
-            console.log("login");
-            var provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithRedirect(provider);
-
-        }
-    }
-
-    function app(user) {
-        // user.displayName
-        // user.email
-        // user.photoURL
-        // user.uid
-
-        document.getElementById('clientName').innerHTML = user.displayName;
-        document.getElementById('clientPhoto').setAttribute("src", user.photoURL);
-    }
-
-    window.onload = login;
-
-</script>
-</html>
